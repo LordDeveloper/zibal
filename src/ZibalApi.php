@@ -86,13 +86,14 @@ class ZibalApi
     }
 
     /**
-     * @param array $data
+     * @param void $trackId
      * @return array
      */
-    protected function verify(array $data = [])
+    protected function verify($trackId = null)
     {
-        $trackId = request('trackId');
-        $response = $this->client->verify($data);
+        $trackId = is_null($trackId)?request('trackId'):$trackId;
+        $response = $this->client->verify(compact('trackId'));
+        dd($response->toObject());
         if ($response->hasMessage() && $response->getMessage() === 'success') {
             $gateway = new Gateway();
             $query = $gateway->newQuery();
