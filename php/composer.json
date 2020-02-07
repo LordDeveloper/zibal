@@ -1,0 +1,28 @@
+{
+    "name": "zibal/php",
+    "type": "library",
+    "description": "A simple PHP wrapper for zibal",
+    "keywords": [
+        "zibal",
+        "gateway",
+        "jey"
+    ],
+    "homepage": "http://github.com/LordDeveloper/zibal",
+    "license": "JEY",
+    "authors": [
+        {
+            "name": "Javad Sadeghi",
+            "email": "sadeghij87@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "zibal/laravel": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zibal\\": "src/"
+        }
+    },
+    "minimum-stability" : "stable"
+}
