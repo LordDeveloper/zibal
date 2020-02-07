@@ -76,12 +76,14 @@ class ZibalApi
             $this->setTrackId($trackId);
             return [
                 'status'=> true,
+                'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
                 'trackId'=> $trackId
             ];
         }
         return [
             'status' => false,
-            'message' => $this->errors[$response->getResult()] ?? $response->getMessage()
+            'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
+            'track_id' => $trackId
         ];
     }
 
@@ -105,12 +107,14 @@ class ZibalApi
             $this->setTrackId($trackId);
             return [
                 'status' => true,
-                'message' => $this->errors[$response->getResult()] ?? $response->getMessage()
+                'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
+                'track_id' => $trackId
             ];
         }
         return [
             'status' => false,
-            'message' => $this->errors[$response->getResult()] ?? $response->getMessage()
+            'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
+            'trackId' => $trackId
         ];
     }
 
