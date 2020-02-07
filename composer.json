@@ -2,7 +2,6 @@
     "name": "jey/zibal",
     "description": "A simple Laravel package for zibal",
     "type": "laravel-package",
-    "license": "JEY",
     "keywords": [
         "laravel",
         "zibal",
@@ -16,7 +15,6 @@
         }
     ],
     "require": {
-        "zibal/php": "*",
         "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
