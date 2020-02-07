@@ -21,16 +21,16 @@
     },
     "autoload": {
         "psr-4": {
-            "Zibal\\Laravel\\": "src/"
+            "Zibal\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Zibal\\Laravel\\ServiceProvider"
+                "Zibal\\ServiceProvider"
             ],
             "aliases": {
-                "Zibal": "Zibal\\Laravel\\Facade"
+                "Zibal": "Zibal\\Facade"
             }
         }
     }

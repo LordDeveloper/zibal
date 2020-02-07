@@ -1,6 +1,6 @@
 <?php
 
-namespace Zibal\Laravel;
+namespace Zibal;
 
 use Illuminate\Support\Facades\Facade as FacadeAlias;
 

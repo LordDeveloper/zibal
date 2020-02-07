@@ -1,8 +1,7 @@
 <?php
-namespace Zibal\Laravel;
+namespace Zibal;
 
 use Illuminate\Support\ServiceProvider;
-use Zibal\ZibalApi;
 
 class ServiceProviderLaravel5 extends ServiceProvider
 {
