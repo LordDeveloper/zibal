@@ -1,5 +1,5 @@
 {
-    "name": "zibal/laravel",
+    "name": "laravel/zibal",
     "description": "A simple Laravel package for zibal",
     "type": "laravel-package",
     "license": "JEY",
