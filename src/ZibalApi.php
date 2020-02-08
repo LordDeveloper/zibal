@@ -77,7 +77,7 @@ class ZibalApi
             return [
                 'status'=> true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
-                'trackId'=> $trackId
+                'track_id'=> $trackId
             ];
         }
         return [
@@ -114,7 +114,7 @@ class ZibalApi
         return [
             'status' => false,
             'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
-            'trackId' => $trackId
+            'track_id' => $trackId
         ];
     }
 
