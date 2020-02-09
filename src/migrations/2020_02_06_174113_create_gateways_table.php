@@ -13,13 +13,14 @@ class CreateGatewaysTable extends Migration
      */
     public function up()
     {
-        Schema::hasTable('gateways') or Schema::create('gateways', function (Blueprint $table) {
+        Schema::hasTable('gateways') || Schema::hasTable('gateways') or Schema::create('gateways', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('amount');
             $table->string('description')->nullable();
-            $table->string('order_id')->nullable();
+            $table->unsignedBigInteger('order_id')->nullable();
             $table->string('mobile')->nullable();
             $table->integer('track_id');
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

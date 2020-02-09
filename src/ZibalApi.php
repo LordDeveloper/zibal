@@ -77,7 +77,8 @@ class ZibalApi
             return [
                 'status'=> true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
-                'track_id'=> $trackId
+                'trackId'=> $trackId,
+                'orderId'=> $response->getOrderId()
             ];
         }
         return [
@@ -108,13 +109,14 @@ class ZibalApi
             return [
                 'status' => true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
-                'track_id' => $trackId
+                'track_id' => $trackId,
+                'orderId'=> $response->getOrderId()
             ];
         }
         return [
             'status' => false,
             'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
-            'track_id' => $trackId
+            'trackId' => $trackId
         ];
     }
 
