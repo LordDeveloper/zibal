@@ -23,7 +23,7 @@ class ServiceProviderLaravel5 extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'merchant');
+        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'zibal');
         $this->app->singleton('zibal', function ($app) {
             return new ZibalApi();
         });
