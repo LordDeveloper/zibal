@@ -68,7 +68,7 @@ class ZibalApi
             $gateway = new Gateway();
             $gateway->amount = $data['amount'];
             $gateway->description = $data['description'] ?? null;
-            $gateway->order_id = $data['order_id'] ?? null;
+            $gateway->order_id = $data['orderId'] ?? null;
             $gateway->mobile = $data['mobile'] ?? null;
             $gateway->track_id = $trackId;
             $gateway->status = 2;
