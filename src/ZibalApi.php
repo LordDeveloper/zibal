@@ -84,7 +84,7 @@ class ZibalApi
         return [
             'status' => false,
             'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
-            'track_id' => $trackId
+            'track_id' => $trackId??0
         ];
     }
 
@@ -94,6 +94,7 @@ class ZibalApi
      */
     protected function verify($trackId = null)
     {
+        dd(request()->all());
         $trackId = is_null($trackId)?request('trackId'):$trackId;
         $response = $this->client->verify(compact('trackId'));
         if ($response->hasMessage() && $response->getMessage() === 'success') {
@@ -110,7 +111,8 @@ class ZibalApi
                 'status' => true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
                 'track_id' => $trackId,
-                'orderId'=> $response->getOrderId()
+                'orderId'=> $response->getOrderId(),
+                'hashedCardNumber'=> request('hashedCardNumber')
             ];
         }
         return [
@@ -125,7 +127,7 @@ class ZibalApi
      * @param bool $directly
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|false
      */
-    protected function redirect($trackId = null, $directly = false)
+    protected function redirect($trackId = null, $directly = true)
     {
         $trackId = empty($trackId) ? static::$trackId : $trackId;
         if (empty($trackId))
