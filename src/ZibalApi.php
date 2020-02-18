@@ -94,7 +94,6 @@ class ZibalApi
      */
     protected function verify($trackId = null)
     {
-        dd(request()->all());
         $trackId = is_null($trackId)?request('trackId'):$trackId;
         $response = $this->client->verify(compact('trackId'));
         if ($response->hasMessage() && $response->getMessage() === 'success') {
