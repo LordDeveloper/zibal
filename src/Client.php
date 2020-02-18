@@ -12,13 +12,13 @@ class Client
      */
     private $request;
     /**
-     * @var \Illuminate\Config\Repository
-     */
-    private $merchant;
-    /**
      * @var stdClass
      */
     private $response;
+    /**
+     * @var array
+     */
+    private $authenticate;
 
     /**
      * Client constructor.
@@ -26,7 +26,8 @@ class Client
     public function __construct()
     {
         $this->request = new Request();
-        $this->merchant = config('zibal.merchant', 'zibal');
+        $this->authenticate['AccountID'] = config('perfectmoney.account_id');
+        $this->authenticate['PassPhrase'] = config('perfectmoney.password');
         $this->response = new Response;
     }
 
