@@ -6,6 +6,9 @@ namespace Zibal;
 class ZibalApi
 {
 
+    /**
+     * @var array
+     */
     private $errors = [
         -1 => 'در انتظار پردخت',
         -2 => 'خطای داخلی',
@@ -134,6 +137,26 @@ class ZibalApi
         return redirect('https://gateway.zibal.ir/start/' . $trackId . ($directly ? '/direct' : null));
     }
 
+    /**
+     * See : https://zibal.ir/pricing/ipg
+     * @param $amount
+     * @param $tariff
+     * @return float|int
+     */
+    protected function profit($amount, $tariff = 1)
+    {
+        $fn = function ($amount, $precent){
+            return ($profit = ($amount / 100)*$precent)<= 4000?$profit:4000;
+        };
+        switch($tariff) {
+            case 1:
+                return $fn($amount, 0.5);
+            case 2:
+                return $fn($amount, 1);
+            case 3:
+                return $fn($amount, 1.5);
+        }
+    }
     /**
      * @param $method
      * @param array $arguments
