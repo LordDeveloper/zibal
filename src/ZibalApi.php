@@ -68,7 +68,7 @@ class ZibalApi
         $response = $this->client->request($data);
 		$trackId = $response->getTrackId();
         if ($response->hasMessage() && $response->getMessage() === 'success') {
-            
+            $this->setTrackId($trackId);
             return [
                 'status'=> true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
@@ -92,7 +92,7 @@ class ZibalApi
         $trackId = is_null($trackId)?request('trackId'):$trackId;
         $response = $this->client->verify(compact('trackId'));
         if ($response->hasMessage() && $response->getMessage() === 'success') {
-           
+            $this->setTrackId($trackId);
             return [
                 'status' => true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
