@@ -12,8 +12,8 @@ class ServiceProviderLaravel6 extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/migrations');
-        $this->publishes([__DIR__.'/migrations'=> database_path('migrations')]);
-        $this->publishes([__DIR__ . '/config/config.php' => config_path('zibal.php')]);
+        // $this->publishes([__DIR__.'/migrations'=> database_path('migrations')]);
+        // $this->publishes([__DIR__ . '/config/config.php' => config_path('zibal.php')]);
     }
     /**
      * Register the service provider.
