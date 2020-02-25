@@ -67,16 +67,6 @@ class ZibalApi
     {
         $response = $this->client->request($data);
         if ($response->hasMessage() && $response->getMessage() === 'success') {
-            $trackId = $response->getTrackId();
-            $gateway = new Gateway();
-            $gateway->amount = $data['amount'];
-            $gateway->description = $data['description'] ?? null;
-            $gateway->order_id = $data['orderId'] ?? null;
-            $gateway->mobile = $data['mobile'] ?? null;
-            $gateway->track_id = $trackId;
-            $gateway->status = 2;
-            $gateway->save();
-            $this->setTrackId($trackId);
             return [
                 'status'=> true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
@@ -100,15 +90,6 @@ class ZibalApi
         $trackId = is_null($trackId)?request('trackId'):$trackId;
         $response = $this->client->verify(compact('trackId'));
         if ($response->hasMessage() && $response->getMessage() === 'success') {
-            $gateway = new Gateway();
-            $query = $gateway->newQuery();
-            $gateway = $query->where('track_id', $trackId)->first();
-            $gateway->description = $response->getDescrption();
-            $gateway->order_id = $response->getOrderId();
-            $gateway->track_id = $trackId;
-            $gateway->status = 1;
-            $gateway->update();
-            $this->setTrackId($trackId);
             return [
                 'status' => true,
                 'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
