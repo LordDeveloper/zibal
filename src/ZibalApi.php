@@ -66,7 +66,7 @@ class ZibalApi
     protected function request(array $data = [])
     {
         $response = $this->client->request($data);
-		$trackId = $response->getTrackId();
+        $trackId = $response->getTrackId();
         if ($response->hasMessage() && $response->getMessage() === 'success') {
             $this->setTrackId($trackId);
             return [
@@ -79,7 +79,7 @@ class ZibalApi
         return [
             'status' => false,
             'message' => $this->errors[$response->getResult()] ?? $response->getMessage(),
-            'track_id' => $trackId??0
+            'trackId' => $trackId??0
         ];
     }
 
